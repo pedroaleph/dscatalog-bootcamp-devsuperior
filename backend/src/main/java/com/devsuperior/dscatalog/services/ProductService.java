@@ -1,6 +1,6 @@
 package com.devsuperior.dscatalog.services;
 
-//import java.net.URL;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -41,8 +41,9 @@ public class ProductService {
 	public Page<ProductDTO> findAllPaged(Long categoryId, String name,  PageRequest pageRequest){
 		List<Category> categories = (categoryId == 0) ? null 
 				: Arrays.asList(categoryRepository.getOne(categoryId));
-		Page<Product> list = repository.find(categories, name, pageRequest);
-		return list.map(x -> new ProductDTO(x));
+		Page<Product> page = repository.find(categories, name, pageRequest);
+		repository.findProductsWithCategories(page.getContent());
+		return page.map(x -> new ProductDTO(x, x.getCategories()));
 		
 	}
 	@Transactional(readOnly = true)
@@ -97,9 +98,8 @@ public class ProductService {
 		}
 	}
 	public UriDTO uploadFile(MultipartFile file) {
-		//URL url = s3Service.uploadFile(file);
-		//return new UriDTO(url.toString());
-		return null;
+		URL url = s3Service.uploadFile(file);
+		return new UriDTO(url.toString());
 	}
 
 }

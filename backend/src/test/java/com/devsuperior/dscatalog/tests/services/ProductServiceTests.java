@@ -50,7 +50,7 @@ public class ProductServiceTests {
 		dependentId = 4L;
 		product = ProductFactory.createProduct();
 		page = new PageImpl<>(List.of(product));
-		productDTO = ProductFactory.createProductDTO();
+		productDTO = new ProductDTO();
 		
 		Mockito.when(repository.find(ArgumentMatchers.any(), ArgumentMatchers.anyString(), ArgumentMatchers.any()))
 			.thenReturn(page);

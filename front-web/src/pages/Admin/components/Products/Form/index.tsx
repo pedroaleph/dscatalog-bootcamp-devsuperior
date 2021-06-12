@@ -42,7 +42,7 @@ const Form = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <BaseForm title="produto">
+            <BaseForm title="Cadastrar um produto">
                 <div className="row">
                     <div className="col-6">
                         <input

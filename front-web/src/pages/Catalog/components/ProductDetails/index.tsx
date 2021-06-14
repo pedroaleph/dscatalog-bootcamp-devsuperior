@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { ReactComponent as ArrowIcon } from '../../../../core/assets/images/arrow.svg';
 import { Product } from '../../../../core/types/Product';
-import makeRequest from '../../../../core/utils/request';
+import makeRequest from 'core/utils/request';
 import ProductDescriptionLoader from '../Loaders/ProductDescriptionLoader';
 import ProductInfoLoader from '../Loaders/ProductInfoLoader';
 import ProductPrice from '../ProductPrice';

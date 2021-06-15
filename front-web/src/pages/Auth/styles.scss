@@ -2,6 +2,9 @@
   display: flex;
   padding: 40px 40px 100px 0;
   justify-content: center;
+  background-image: url(~core/assets/images/auth-background.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 .auth-info {
   margin-top: 35px;

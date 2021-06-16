@@ -1,16 +1,19 @@
 import makeRequest, { makePrivateRequest } from 'core/utils/request';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import BaseForm from '../../BaseForm';
+import Select from 'react-select';
 import './styles.scss'
+import { Category } from 'core/types/Product';
 
 type FormState = {
     name: string;
     price: string;
     description: string;
     imgUrl: string;
+    categories: Category[];
 }
 
 type ParamsType = {
@@ -18,9 +21,11 @@ type ParamsType = {
 }
 
 const Form = () => {
-    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormState>();
+    const { register, handleSubmit, formState: { errors }, setValue , control } = useForm<FormState>();
     const history = useHistory();
     const { productId } = useParams<ParamsType>();
+    const [isLoadingCategories, setIsLoadingCategories] = useState(false);
+    const [categories, setCategories] = useState<Category[]>([]);
     const isEditing = productId !== 'create';
     const formTitle = isEditing ? 'Editar Produto' : 'Cadastrar um Produto';
 
@@ -32,13 +37,21 @@ const Form = () => {
                     setValue('price', response.data.price);
                     setValue('description', response.data.description);
                     setValue('imgUrl', response.data.imgUrl);
+                    setValue('categories', response.data.categories);
                 })
         }
     }, [productId, isEditing, setValue]);
 
+    useEffect(() => {
+        setIsLoadingCategories(true);
+        makeRequest({ url: '/categories' })
+            .then(response => setCategories(response.data.content))
+            .finally(() => setIsLoadingCategories(false));
+    }, []);
+
     const onSubmit = (data: FormState) => {
         makePrivateRequest({
-            url: isEditing ? `/products/${productId}`: '/products',
+            url: isEditing ? `/products/${productId}` : '/products',
             method: isEditing ? 'PUT' : 'POST',
             data
         })
@@ -78,6 +91,30 @@ const Form = () => {
                             {errors.name && (
                                 <div className="invalid-feedback d-block">
                                     {errors.name.message}
+                                </div>
+                            )}
+                        </div>
+                        <div className="margin-bottom-30">
+                            <Controller
+                                name="categories"
+                                rules={{ required: true }}
+                                control={control}
+                                render={({ field }) => (
+                                    <Select
+                                        {...field}
+                                        isLoading={isLoadingCategories}
+                                        options={categories}
+                                        getOptionLabel={(option: Category) => option.name}
+                                        getOptionValue={(option: Category) => String(option.id)}
+                                        classNamePrefix="categories-select"
+                                        placeholder="Categorias"
+                                        isMulti
+                                    />
+                                )}
+                            />
+                            {errors.categories && (
+                                <div className="invalid-feedback d-block">
+                                    Campo obrigatório
                                 </div>
                             )}
                         </div>

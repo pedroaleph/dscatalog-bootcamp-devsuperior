@@ -4,6 +4,7 @@ import makeRequest, { makePrivateRequest } from 'core/utils/request';
 import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router'
 import { toast } from 'react-toastify';
+import CardLoader from '../../Loaders/CardLoader';
 import Card from '../Card';
 import './styles.scss'
 
@@ -38,7 +39,7 @@ const List = () => {
 
     const onRemove = (productId: number) => {
         const confirm = window.confirm('Deseja realmente excluir este produto?');
-        
+
         if (confirm) {
             makePrivateRequest({ url: `/products/${productId}`, method: 'DELETE' })
                 .then(() => {
@@ -57,9 +58,11 @@ const List = () => {
                 ADICIONAR
             </button>
             <div className="admin-list-container">
-                {productsResponse?.content.map(product => (
-                    <Card product={product} key={product.id} onRemove={onRemove} />
-                ))}
+                {isLoading ? <CardLoader /> : (
+                    productsResponse?.content.map(product => (
+                        <Card product={product} key={product.id} onRemove={onRemove} />
+                    ))
+                )}
                 {productsResponse && (
                     <Pagination
                         totalPages={productsResponse.totalPages}

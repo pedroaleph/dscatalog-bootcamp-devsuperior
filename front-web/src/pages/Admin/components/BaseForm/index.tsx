@@ -16,7 +16,7 @@ const BaseForm = ({title, children} : Props) => {
     return (
         <div className="admin-base-form card-base">
             <h1 className="base-form-title">
-                cadastrar um {title}
+                {title}
             </h1>
             {children}
             <div className="base-form-actions">
@@ -26,7 +26,9 @@ const BaseForm = ({title, children} : Props) => {
                 >
                     CANCELAR
                 </button>
-                <button className="btn btn-primary border-radius-10 mr-3">CADASTRAR</button>
+                <button className="btn btn-primary border-radius-10 mr-3">
+                    SALVAR
+                </button>
             </div>
         </div>
     )

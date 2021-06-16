@@ -1,14 +1,15 @@
 import makeRequest, { makePrivateRequest } from 'core/utils/request';
-import { useEffect, useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
+import { Category } from 'core/types/Product';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import BaseForm from '../../BaseForm';
 import Select from 'react-select';
+import PriceField from './PriceField';
 import './styles.scss'
-import { Category } from 'core/types/Product';
 
-type FormState = {
+export type FormState = {
     name: string;
     price: string;
     description: string;
@@ -97,8 +98,9 @@ const Form = () => {
                         <div className="margin-bottom-30">
                             <Controller
                                 name="categories"
-                                rules={{ required: true }}
+                                defaultValue={[]}
                                 control={control}
+                                rules={{ required: true }}
                                 render={({ field }) => (
                                     <Select
                                         {...field}
@@ -119,12 +121,7 @@ const Form = () => {
                             )}
                         </div>
                         <div className="margin-bottom-30">
-                            <input
-                                {...register("price", { required: "Campo obrigatório" })}
-                                type="number"
-                                className="form-control input-base"
-                                placeholder="Preço"
-                            />
+                            <PriceField control={control}/>
                             {errors.price && (
                                 <div className="invalid-feedback d-block">
                                     {errors.price.message}

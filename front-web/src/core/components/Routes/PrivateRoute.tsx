@@ -1,4 +1,4 @@
-import { isAllowedByRole, isAuthenticated, Role } from "core/utils/auth";
+import { isAllowedByRole, isAuthenticated, logout, Role } from "core/utils/auth";
 import { Redirect, Route } from "react-router-dom";
 
 type Props = {
@@ -13,6 +13,7 @@ const PrivateRoute = ({ children, path, allowedRoutes }: Props) => {
       path={path}
       render={({ location }) => {
         if (!isAuthenticated()) {
+          logout();
           return (
             <Redirect 
               to={{

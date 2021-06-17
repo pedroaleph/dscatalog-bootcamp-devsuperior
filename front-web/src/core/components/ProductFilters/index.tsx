@@ -5,53 +5,40 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import './styles.scss'
 
-export type FilterForm = {
-  name?: string;
-  categoryId?: number;
-}
-
 type Props = {
-  OnSearch: (filter: FilterForm) => void;
+  name?: string;
+  category?: Category;
+  handleChangeName: (name: string) => void;
+  handleChangeCategory: (category: Category) => void;
+  clearFilters: () => void;
 }
 
-const ProductFilters = ({ OnSearch }: Props) => {
+const ProductFilters = ({
+  name,
+  category,
+  handleChangeName,
+  handleChangeCategory,
+  clearFilters
+}: Props) => {
   const [isLoadingCategories, setIsLoadingCategories] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState<Category>();
 
   useEffect(() => {
     setIsLoadingCategories(true);
     makeRequest({ url: '/categories' })
-        .then(response => setCategories(response.data.content))
-        .finally(() => setIsLoadingCategories(false));
-}, []);
-
-  const handleChangeName = (name: string, category: Category) => {
-    setName(name);
-    OnSearch({ name, categoryId: category?.id});
-  }
-
-  const handleChangeCategory = (category: Category) => {
-    setCategory(category);
-    OnSearch({ name, categoryId: category?.id});
-  }
-
-  const clearFilters = () => {
-    setCategory(undefined);
-    setName('');
-    OnSearch({ name: '', categoryId: 0 });
-  }
+      .then(response => setCategories(response.data.content))
+      .finally(() => setIsLoadingCategories(false));
+  }, []);
 
   return (
     <div className="card-base product-filters-container">
       <div className="input-search">
         <input
           type="text"
-          value={name}
+          value={name as string}
           className="form-control"
           placeholder="Pesquisar Produto"
-          onChange={event => handleChangeName(event.target.value, category as Category)}
+          onChange={event => handleChangeName(event.target.value)}
         />
         <SearchIcon />
       </div>

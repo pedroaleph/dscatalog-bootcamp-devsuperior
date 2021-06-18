@@ -37,8 +37,7 @@ const Filters = (
       <button
         className="btn btn-outline-secondary border-radius-10 px-5"
         onClick={() => {
-          window.location.reload();
-          clearFilters();
+          //clearFilters();
         }}
       >
         LIMPAR FILTRO

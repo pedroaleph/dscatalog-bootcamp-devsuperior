@@ -10,3 +10,33 @@
 .admin-list-container {
     margin: 45px 0;
 }
+
+.admin-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+    &:hover {
+        border: 1px solid  #407BFF;
+      }
+    
+    a, button {
+        width: 50%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.card-name-admin {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+}
+
+.card-email-admin {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #9E9E9E;
+}

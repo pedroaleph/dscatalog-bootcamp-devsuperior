@@ -20,7 +20,7 @@ const Card = ({ product, onRemove }: Props) => {
           />
         </div>
         <div className="col-7 py-3">
-          <h3 className="product-card-name-admin">
+          <h3 className="card-name-admin">
             {product.name}
           </h3>
           <ProductPrice price={product.price} />
@@ -32,7 +32,7 @@ const Card = ({ product, onRemove }: Props) => {
             ))}
           </div>
         </div>
-        <div className="col-3 pt-3 pr-5">
+        <div className="col-3 pr-5 pt-3">
           <Link
             to={`/admin/products/${product.id}`}
             type="button"

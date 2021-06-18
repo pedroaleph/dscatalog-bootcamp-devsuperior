@@ -6,7 +6,7 @@ import ProductCard from './components/ProductCard';
 import ProductCardLoader from './components/Loaders/ProductCardLoader';
 import Pagination from '../../core/components/Pagination';
 import './styles.scss';
-import ProductFilters from 'core/components/ProductFilters';
+import ProductFilters from 'core/components/Filters/ProductFilters';
 
 const Catalog = () => {
     const [productsResponse, setProductsResponse] = useState<ProductsResponse>();

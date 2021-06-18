@@ -83,6 +83,7 @@ const Form = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <BaseForm
                 title={formTitle}
+                path='/admin/products'
             >
                 <div className="row">
                     <div className="col-6">

@@ -4,13 +4,14 @@ import './styles.scss'
 
 type Props = {
     title: string;
+    path: string;
     children: React.ReactNode;
 }
 
-const BaseForm = ({title, children} : Props) => {
+const BaseForm = ({title, path, children} : Props) => {
     const history = useHistory();
     const handleCancel = () => {
-        history.push('../');
+        history.replace(path);
     };
 
     return (

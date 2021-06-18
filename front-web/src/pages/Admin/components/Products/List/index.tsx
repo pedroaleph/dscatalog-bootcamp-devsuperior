@@ -6,7 +6,7 @@ import { useHistory } from 'react-router'
 import { toast } from 'react-toastify';
 import CardLoader from '../../Loaders/CardLoader';
 import Card from '../Card';
-import ProductFilters from 'core/components/ProductFilters';
+import ProductFilters from 'core/components/Filters/ProductFilters';
 import './styles.scss'
 
 const List = () => {
@@ -60,26 +60,26 @@ const List = () => {
     const handleChangeName = (name: string) => {
         setActivePage(0);
         setName(name);
-      }
-    
-      const handleChangeCategory = (category: Category) => {
+    }
+
+    const handleChangeCategory = (category: Category) => {
         setActivePage(0);
         setCategory(category);
-      }
-    
-      const clearFilters = () => {
+    }
+
+    const clearFilters = () => {
         setActivePage(0);
         setCategory(undefined);
         setName('');
-      }
+    }
 
     return (
         <div className="admin-products-list">
             <div className="d-flex justify-content-between">
-            <button className="btn btn-primary btn-lg" onClick={handleCreate}>
-                ADICIONAR
-            </button>
-            <ProductFilters
+                <button className="btn btn-primary btn-lg" onClick={handleCreate}>
+                    ADICIONAR
+                </button>
+                <ProductFilters
                     name={name}
                     category={category as Category}
                     handleChangeName={handleChangeName}

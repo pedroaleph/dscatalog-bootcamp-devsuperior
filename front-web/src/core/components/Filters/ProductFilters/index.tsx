@@ -3,7 +3,7 @@ import { Category } from 'core/types/Product';
 import makeRequest from 'core/utils/request';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
-import './styles.scss'
+import '../styles.scss';
 
 type Props = {
   name?: string;
@@ -31,7 +31,7 @@ const ProductFilters = ({
   }, []);
 
   return (
-    <div className="card-base product-filters-container">
+    <div className="card-base filters-container">
       <div className="input-search">
         <input
           type="text"
@@ -43,7 +43,6 @@ const ProductFilters = ({
         <SearchIcon />
       </div>
       <Select
-        name="categories"
         value={category as Category}
         key={`select-${category?.id}`}
         isLoading={isLoadingCategories}
@@ -51,7 +50,7 @@ const ProductFilters = ({
         getOptionLabel={(option: Category) => option.name}
         getOptionValue={(option: Category) => String(option.id)}
         className="filter-select-container"
-        classNamePrefix="product-categories-select"
+        classNamePrefix="filter-select"
         placeholder="Filtrar por Categoria"
         onChange={value => handleChangeCategory(value as Category)}
       />

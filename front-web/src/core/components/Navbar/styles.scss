@@ -10,7 +10,7 @@
 }
 
 .nav-logo-txt {
-    width: 30%;
+    width: 25%;
     color: #FFF;
 }
 
@@ -19,11 +19,14 @@
 }
 
 .menu-container {
-    width: 55%;
+    width: 50%;
     display: flex;
-    flex: 1;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: nowrap;
+}
+
+.user-info-dnone {
+    width: 25%;
 }
 
 .main-menu {
@@ -68,7 +71,6 @@ a {
     }
     .nav-logo-txt {
         width: 50%;
-        margin-left: 15px;
     }
     .menu-mobile-btn {
         display: block;

@@ -87,7 +87,7 @@ const handleLogout = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
                         {currentUser}
                         <a
                             href="#logout"
-                            className="active d-inline ml-3"
+                            className="active d-inline ml-2"
                             onClick={event => {
                                 handleLogout(event);
                                 setDrawerActive(false);

@@ -35,6 +35,7 @@
 }
 .admin-card-buttons {
     display: flex;
+    flex-direction: row;
     width: 50%;
     justify-content: space-around;
 }
@@ -52,13 +53,24 @@
     color: #9E9E9E;
 }
 
+.admin-list-filters {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media (max-width: 768px) {
     .admin-container {
         flex-direction: column;
     }
+    .admin-list-filters button {
+        margin-right: 20px;
+    }
 }
 
 @media (max-width: 576px) {
+    .admin-list-container {
+        margin: 20px 0;
+    }
     .buttons-container {
         width: 100%;
         display: flex;
@@ -74,5 +86,11 @@
           width: 100%;
           margin-top: 10px;
           flex-direction: row-reverse;
+      }
+      .admin-list-filters {
+          flex-direction: column;
+          button {
+              margin: 0 0 20px;
+          }
       }
 }

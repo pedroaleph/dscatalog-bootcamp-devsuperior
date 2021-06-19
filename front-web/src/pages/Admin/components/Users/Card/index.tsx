@@ -10,8 +10,8 @@ type Props = {
 const Card = ({ user, onRemove }: Props) => {
   return (
     <div className="card-base admin-card py-3">
-      <div className="row px-4">
-        <div className="col-6">
+      <div className="admin-card-row">
+        <div className="">
           <h3 className="card-name-admin">
             {user.firstName + " " + user.lastName}
           </h3>
@@ -19,11 +19,11 @@ const Card = ({ user, onRemove }: Props) => {
             {user.email}
           </h5>
         </div>
-        <div className="col-6 d-flex">
+        <div className="admin-card-buttons">
           <Link
             to={`/admin/users/${user.id}`}
             type="button"
-            className="btn btn-outline-secondary border-radius-10 mr-4"
+            className="btn btn-outline-secondary border-radius-10"
           >
             EDITAR
           </Link>

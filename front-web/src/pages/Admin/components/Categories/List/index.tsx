@@ -86,7 +86,6 @@ const List = () => {
         {categoriesResponse && (
           <Pagination
             totalPages={categoriesResponse.totalPages}
-            activePage={activePage}
             onChange={page => setActivePage(page)}
           />
         )}

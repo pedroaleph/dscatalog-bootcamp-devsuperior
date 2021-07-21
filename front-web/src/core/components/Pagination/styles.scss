@@ -3,6 +3,10 @@
     align-items: center;
     justify-content: center;
     margin-top: 35px;
+
+    a:focus {
+        outline: none;
+    }
 }
 .pagination-previous {
     transform: rotate(-180deg);
@@ -40,4 +44,12 @@
     &.active {
         background: #407BFF;
     }
+
+    &:hover {
+        color: #FFFFFF;
+    }
+}
+
+.pagination {
+    align-items: center;
 }

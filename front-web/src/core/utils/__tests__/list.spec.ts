@@ -1,4 +1,4 @@
-import { generateList } from '../lists';
+import { generateList } from '../list';
 
 test('should generate a list', () => {
   // ARRANGE

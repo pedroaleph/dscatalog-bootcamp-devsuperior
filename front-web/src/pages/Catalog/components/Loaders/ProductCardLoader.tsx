@@ -1,5 +1,5 @@
 import ContentLoader from "react-content-loader"
-import { generateList } from "../../../../core/utils/lists";
+import { generateList } from "../../../../core/utils/list";
 
 const ProductCardLoader = () => {
   const loaderItems = generateList(3);

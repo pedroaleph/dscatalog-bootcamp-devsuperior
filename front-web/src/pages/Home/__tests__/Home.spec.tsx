@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import history from 'core/utils/history';
 import { Router } from 'react-router-dom';
 import Home from '..';

@@ -70,18 +70,18 @@ test('should trigger onChange action', () => {
   const previousElement = screen.getByTestId('arrow-icon-previous');
   const nextElement = screen.getByTestId('arrow-icon-next');
   const firstPageItem = screen.getByText('1');
-  const secondPageItem = screen.getByText('2');
+  const thirdPageItem = screen.getByText('3');
 
   userEvent.click(firstPageItem);
   expect(onChange).not.toHaveBeenCalled();
 
-  userEvent.click(secondPageItem);
-  expect(onChange).toHaveBeenCalledWith(1);
+  userEvent.click(previousElement);
+  expect(onChange).not.toHaveBeenCalled();
+
+  userEvent.click(thirdPageItem);
+  expect(onChange).toHaveBeenCalledWith(2);
 
   userEvent.click(previousElement);
-  expect(onChange).toHaveBeenCalledWith(0);
-
-  userEvent.click(nextElement);
   expect(onChange).toHaveBeenCalledWith(1);
 
   userEvent.click(nextElement);

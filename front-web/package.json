@@ -17,6 +17,8 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "jwt-decode": "^3.1.2",
+    "msw": "^0.35.0",
+    "mutationobserver-shim": "^0.3.7",
     "qs": "^6.10.1",
     "react": "^17.0.1",
     "react-content-loader": "^6.0.1",
@@ -35,8 +37,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
-    "test:watch": "react-scripts test",
+    "test": "react-scripts test --watchAll=false --testPathIgnorePatterns='fixtures.ts'",
+    "test:watch": "react-scripts test --testPathIgnorePatterns='fixtures.ts'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

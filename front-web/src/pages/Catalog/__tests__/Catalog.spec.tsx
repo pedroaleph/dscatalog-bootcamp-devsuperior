@@ -5,20 +5,20 @@ import history from 'core/utils/history';
 import { Router } from 'react-router-dom';
 import Catalog from '..';
 import { BASE_URL } from 'core/utils/request';
-import { productsResponse } from './fixtures';
+import { categoriesResponse, productsResponse } from './fixtures';
 
 const server = setupServer(
     rest.get(`${BASE_URL}/products`, (req, res, ctx) => {
       return res(ctx.json(productsResponse))
     }),
+    rest.get(`${BASE_URL}/categories`, (req, res, ctx) => {
+        return res(ctx.json(categoriesResponse))
+      }),
 );
   
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
-beforeEach(() => {
-    console.log('running a test...');
-})
 
 test('should render Catalog', async () => {
     render(

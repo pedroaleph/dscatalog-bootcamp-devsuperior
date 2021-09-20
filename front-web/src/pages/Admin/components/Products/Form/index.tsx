@@ -103,6 +103,7 @@ const Form = () => {
                                 type="text"
                                 className="form-control input-base"
                                 placeholder="Nome do Produto"
+                                data-testid="name"
                             />
                             {errors.name && (
                                 <div className="invalid-feedback d-block">
@@ -111,6 +112,7 @@ const Form = () => {
                             )}
                         </div>
                         <div className="margin-bottom-30">
+                            <label htmlFor="categories" className="d-none">Categorias</label>
                             <Controller
                                 name="categories"
                                 defaultValue={[]}
@@ -125,6 +127,7 @@ const Form = () => {
                                         getOptionValue={(option: Category) => String(option.id)}
                                         classNamePrefix="categories-select"
                                         placeholder="Categorias"
+                                        inputId="categories"
                                         isMulti
                                     />
                                 )}
@@ -136,6 +139,7 @@ const Form = () => {
                             )}
                         </div>
                         <div className="margin-bottom-30">
+                            <label htmlFor="price" className="d-none">Preço</label>
                             <PriceField control={control} />
                             {errors.price && (
                                 <div className="invalid-feedback d-block">
@@ -157,6 +161,7 @@ const Form = () => {
                             cols={30}
                             rows={10}
                             placeholder="Descrição"
+                            data-testid="description"
                         />
                         {errors.description && (
                             <div className="invalid-feedback d-block">
